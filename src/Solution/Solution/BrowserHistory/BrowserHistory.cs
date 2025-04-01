@@ -43,7 +43,8 @@ public class ManualStack
 
     public Halaman Pop()
     {
-        if (IsEmpty()) return null;
+        if (IsEmpty()) throw new InvalidOperationException("Stack is empty.");
+
 
         var poppedNode = top;
         top = top.Next;
@@ -52,6 +53,8 @@ public class ManualStack
 
     public Halaman Peek()
     {
+        if (IsEmpty()) throw new InvalidOperationException("Stack is empty.");
+
         return top?.Data;
     }
 
@@ -90,9 +93,11 @@ public class HistoryManager
 
     public string Kembali()
     {
-        if (history.IsEmpty() || history.Peek() == null) return "Tidak ada halaman sebelumnya.";
+        if (history.IsEmpty()) return "Tidak ada halaman sebelumnya.";
+
         history.Pop();
-        return history.Peek()?.URL ?? "Tidak ada halaman sebelumnya.";
+
+        return history.IsEmpty() ? "Tidak ada halaman sebelumnya." : history.Peek()?.URL;
     }
 
     public string LihatHalamanSaatIni()
@@ -102,7 +107,17 @@ public class HistoryManager
 
     public void TampilkanHistory()
     {
-        Console.WriteLine("Menampilkan history:");
-        history.Display();
+        var tempStack = new ManualStack();
+        while (!history.IsEmpty())
+        {
+            tempStack.Push(history.Pop());
+        }
+
+        while (!tempStack.IsEmpty())
+        {
+            var halaman = tempStack.Pop();
+            Console.WriteLine($"{halaman.URL}");
+            history.Push(halaman); 
+        }
     }
 }
