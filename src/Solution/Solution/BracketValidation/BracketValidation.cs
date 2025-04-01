@@ -52,7 +52,7 @@ public class ManualStack
 
 public class BracketValidator
 {
-    public static bool ValidasiEkspresi(string ekspresi)
+    public bool ValidasiEkspresi(string ekspresi)
     {
         var stack = new ManualStack();
         foreach (var ch in ekspresi)

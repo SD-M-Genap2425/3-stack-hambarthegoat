@@ -73,11 +73,11 @@ public class ManualStack
     }
 }
 
-public class BrowserHistory2
+public class BrowserHistory
 {
     private ManualStack history;
 
-    public BrowserHistory2()
+    public BrowserHistory()
     {
         history = new ManualStack();
     }

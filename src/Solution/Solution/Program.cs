@@ -9,7 +9,7 @@ internal class Program
     static void Main(string[] args)
     {
         // Browser history
-        var browserHistory = new BrowserHistory2();
+        var browserHistory = new Solution.BrowserHistory.BrowserHistory();
         browserHistory.KunjungiHalaman("google.com");
         browserHistory.KunjungiHalaman("example.com");
         browserHistory.KunjungiHalaman("stackoverflow.com");
@@ -25,8 +25,8 @@ internal class Program
         string ekspresiValid = "[{}](){}";
         string ekspresiInvalid = "(]";
 
-        Console.WriteLine($"Ekspresi '{ekspresiValid}' valid? {BracketValidator.ValidasiEkspresi(ekspresiValid)}");
-        Console.WriteLine($"Ekspresi '{ekspresiInvalid}' valid? {BracketValidator.ValidasiEkspresi(ekspresiInvalid)}");
+        Console.WriteLine($"Ekspresi '{ekspresiValid}' valid? {validator.ValidasiEkspresi(ekspresiValid)}");
+        Console.WriteLine($"Ekspresi '{ekspresiInvalid}' valid? {validator.ValidasiEkspresi(ekspresiInvalid)}");
         // Palindrome Checker
         string input1 = "Kasur ini rusak";
         string input2 = "Hello World";
